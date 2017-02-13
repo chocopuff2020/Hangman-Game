@@ -1,246 +1,55 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
+
 <head>
-<title>Hangman</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<script type="text/javascript" language="JavaScript">
- 
-var NumberOfChances;
-var theWord = "",oldString="";
-var currentGuessed = "";
-var value="";
-//Array of 50 secret words
-var words = new Array();
-words[0]="computer";
-words[1]="electronic";
-words[2]="negative";
-words[3]="positive";
-words[4]="ambassador";
-words[5]="dictionary";
-words[6]="maintain";
-words[7]="responsible";
-words[8]="adventure";
-words[9]="sunshine";
-words[10]="friendship";
-words[11]="attention";
-words[12]="surgery";
-words[13]="genealogy";
-words[14]="investment";
-words[15]="mathematics";
-words[16]="journey";
-words[17]="interest";
-words[18]="moment";
-words[19]="military";
-words[20]="development";
-words[21]="enjoyment";
-words[22]="encouragement";
-words[23]="hygiene";
-words[24]="enlistment";
-words[25]="hyphenation";
-words[26]="orientation";
-words[27]="references";
-words[28]="highlight";
-words[29]="recipients";
-words[30]="envelopes";
-words[31]="preview";
-words[32]="translation";
-words[33]="research";
-words[34]="grammar";
-words[35]="thumbnails";
-words[36]="document";
-words[37]="position";
-words[38]="window";
-words[39]="conversation";
-words[40]="recommendations";
-words[41]="experience";
-words[42]="reference";
-words[43]="failure";
-words[44]="dignity";
-words[45]="faithfulness";
-words[46]="recklessness";
-words[47]="leftovers";
-words[48]="remainder";
-words[49]="difficulty";
-words[50]="boxes";
- 
- 
- 
-//hangman series of images
-var image = new Array();
-image[0] = '<img src="image0.jpg" align ="left" width="415" height="496">';
-image[1] = "<img src='image1.jpg' align ='left' width='415' height='496'>";
-image[2] = '<img src="image2.jpg" align ="left" width="415" height="496">';
-image[3] = '<img src="image3.jpg" align ="left" width="415" height="496">';
-image[4] = '<img src="image4.jpg" align ="left" width="415" height="496">';
-image[5] = '<img src="image5.jpg" align ="left" width="415" height="496">';
-image[6] = '<img src="image6.jpg" align ="left" width="415" height="496">';
-//document.getElementById('Image').innerHTML = '<img src = "Image' + count + '.jpg" />';
-NumberOfChances = image.length;
- 
- 
-//swap the images for the hangman, start with image[0], then replace the image with each wrong guess, 6 chances
-function swap(image)
-{
-document.getElementById("images").src =image+".gif";
- 
-}
-// an array to store the letters guessed if i can not figure out how to disable onclick of letters in form,
-//want to highlight them red to so the player sees that they already choose that letter
-var usedLetters = new Array();
- 
-//for (i=0; i<letterguessed; i++)
- 
- 
- 
-// creating the random pick of the secret word out of 50 choices 
-function secretWord()
-{
-debugger
-theWord = words[Math.floor(Math.random()*51)]; 
-for (i=0; i<theWord.length; i++)
-{
-currentGuessed = currentGuessed + "*";
- 
-}
-document.getElementById("secretWord").value = currentGuessed;
-debugger
-}
- 
-//the process that starts the game and resets it when the player chooses to play again 
-function gameProcess()
-{
-currentGuessed ="";
-secretWord();
-NumberOfChances=0;
-document.getElementById("lives").value = NumberOfChances;
-startImage = image[0];
-} 
- 
- 
-//this is what happens when the player takes a turn 
-function turn(letterGuessed)
-{
-debugger
-value = oldString = "";
-var correctGuess = false;
-for (i=0; i<theWord.length; i++)
-{
- 
-if (theWord.charAt(i) == letterGuessed)
-{
-value  = value + letterGuessed;
-currentGuessed = currentGuessed.replace(oldString + "*",value);
-oldString = value;
-correctGuess=true;
-}
-else
-{
-if(currentGuessed.charAt(i) == "*")
-{
-value = value + '*';
-oldString = oldString + "*";
-}
-else
-{
-value = value + currentGuessed.charAt(i);
-oldString = oldString + currentGuessed.charAt(i);
-}
-}
-} 
-if (!correctGuess)
-{
-NumberOfChances++;
-swap("image" + NumberOfChances );
-if (NumberOfChances==6)
-{
-alert("You Lost!");
-document.getElementById("secretWord").value = theWord;
-theWord = "";
-currentGuessed = "";
-}
-document.getElementById("lives").value = NumberOfChances;
-if(correctGuess != 0)
-{
-takeChance();
-}
-}
-win();
-}
- 
-function win()
-{
- 
-var winCount = 0;
-for(var i = 0;i<theWord.length;i++)
-{
-if(currentGuessed.charAt(i) == "*")
-{
-winCount++;
-}
-document.getElementById("secretWord").value = currentGuessed;
-}
-if(winCount == 0 && currentGuessed != "")
-{
-alert("yay, you win!");
-}
- 
-} 
- 
-</script>
+    <title>Hangman Game</title>
+    <link rel="stylesheet" type="text/css" href="./node_modules/skeleton-css/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="./node_modules/skeleton-css/css/skeleton.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
 </head>
- 
+
 <body>
-<!--need to use Div tags --> 
-<H1> HangMan Fucking Project</H1>
-<!--hangman pic displaying first image, need to swap images with each wrong guess -->
- 
- 
-<!-- form for guessing letter,display secret word, display number of guesses left, restart, end game -->
-<form name="userGuessForm"  id="form1">
-<div id="Image"><img src="image0.gif" align ="left" width="415" height="496" id="images"/></div>
-<div id="wordDisplay"></div>
- 
-This is the Secret Word<br /><input id="secretWord" type="text" value="currentGuessed" />
-<br />
-<input id="letters" type="button" name="a" value="a" onClick="turn('a');"><!-- as player guess wrong letter change to red and make unusable so player can not choose the letter again-->
-<input id="Button1" type="button" name="b" value="b" onClick="turn('b');">
-<input id="Button2" type="button" name="c" value="c" onClick="turn('c');">
-<input id="Button3" type="button" name="d" value="d" onClick="turn('d');">
-<input id="Button4" type="button" name="e" value="e" onClick="turn('e');">
-<input id="Button5" type="button" name="f" value="f" onClick="turn('f');">
-<input id="Button6" type="button" name="g" value="g" onClick="turn('g');">
-<input id="Button7" type="button" name="h" value="h" onClick="turn('h');">
-<input id="Button8" type="button" name="i" value="i" onClick="turn('i');">
-<input id="Button9" type="button" name="j" value="j" onClick="turn('j');">
-<input id="Button10" type="button" name="k" value="k" onClick="turn('k');">
-<input id="Button11" type="button" name="l" value="l" onClick="turn('l');">
-<input id="Button12" type="button" name="m" value="m" onClick="turn('m');">
-<input id="Button13" type="button" name="n" value="n" onClick="turn('n');">
-<input id="Button14" type="button" name="o" value="o" onClick="turn('o');">
-<input id="Button15" type="button" name="p" value="p" onClick="turn('p');">
-<input id="Button16" type="button" name="q" value="q" onClick="turn('q');">
-<input id="Button17" type="button" name="r" value="r" onClick="turn('r');">
-<input id="Button18" type="button" name="s" value="s" onClick="turn('s');">
-<input id="Button19" type="button" name="t" value="t" onClick="turn('t');">
-<input id="Button20" type="button" name="u" value="u" onClick="turn('u');">
-<input id="Button21" type="button" name="v" value="v" onClick="turn('v');">
-<input id="Button22" type="button" name="w" value="w" onClick="turn('w');">
-<input id="Button23" type="button" name="x" value="x" onClick="turn('x');">
-<input id="Button24" type="button" name="y" value="y" onClick="turn('y');">
-<input id="Button25" type="button" name="z" value="z" onClick="turn('Z');"><br />
-Number of Tries (6): <input id="lives" type="text" value="0" onfocus="lives.blur();" SIZE=2> 
-<input type="button" name="submit" value=" Start Over " onClick="gameProcess()">
-<input type="button" name="end" value=" END " onClick="gameEnd()"><br />
- 
- 
-</form>
- 
-<p>&nbsp;</p>
-<H2>Directions</H2>
-Please guess a letter to see if you figure out the secret word.<br />
-You will have 6 chances to guess the word, or guess a letter.<br />
-If you guess incorrectly you will lose a chance and your clown will be one step closer to being hung!<br />
-Good Luck! 
- 
+    <div class="wrapper">
+        <div class="container">
+            <div class="row" style="height: 25vh;">
+                <div class="columns twelve section-title">
+                    <h1>Hangman</h1>
+                    <button id="play-button" class="button-primary">Play Again</button>
+                </div>
+            </div>
+			<div class="row" style="height: 25vh;">
+				<div class="columns twelve">
+		            <div class="section-letters">
+		            </div>
+				</div>
+			</div>
+            <div class="row" style="height:50vh;">
+                <div class="columns six">
+                    <div class="section-hangman">
+                        HANGMAN PICTURE
+                    </div>
+                </div>
+                <div class="columns six">
+                    <div class="section-preview">
+	                    <p>word:</p>
+                    	<p id="word_preview">_ _ _ _</p>
+                    	<p>guesses left <span id="guesses-left"></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="./assets/javascript/game.js"></script>
+	<script type="text/javascript">
+		var game = new Game();
+		var playButton = document.getElementById('play-button');
+
+		playButton.addEventListener('click', function(evt) {
+			evt.preventDefault();
+			game.play();
+		});
+
+	</script>
 </body>
+
 </html>

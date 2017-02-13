@@ -1,0 +1,22 @@
+html, body {
+	height: 100%;
+}
+
+.wrapper {
+	height: 100%;
+}
+
+/* title */
+.section-title {
+	text-align: center;
+}
+
+/* letters */
+.section-letters {
+	margin-bottom: 2em;
+}
+
+/* hangman */
+.section-hangman {
+
+}
