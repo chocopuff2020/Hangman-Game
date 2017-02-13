@@ -17,6 +17,11 @@ function getButton(value, hasGuessed) {
 	var button = document.createElement('button');
 	button.className = 'button-primary';
 	button.textContent = value;
+	button.style.margin = '0.5em';
+	button.style.padding = '0 28px';
+	button.style.width = '62px';
+	button.style.height = '62px';
+	button.style.borderRadius = '50%';
 	if (hasGuessed) {
 		button.style.backgroundColor = 'gray';
 	}
