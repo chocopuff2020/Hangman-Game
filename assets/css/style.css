@@ -1,3 +1,4 @@
+/* LAYOUT */
 html, body {
 	height: 100%;
 }
@@ -6,17 +7,62 @@ html, body {
 	height: 100%;
 }
 
-/* title */
+/* TITLE */
 .section-title {
 	text-align: center;
+	margin-top: 60px;
 }
 
-/* letters */
+#title {
+	color:white;
+	font-size: 60px;
+	font-family: 'Dancing Script', cursive;
+	font-family: 'Amatic SC', cursive;
+	font-family: 'Architects Daughter', cursive;
+	font-family: 'Orbitron', sans-serif;
+	font-family: 'Satisfy', cursive;
+	font-family: 'Permanent Marker', cursive;
+	font-family: 'Coming Soon', cursive;
+	font-family: 'Nosifer', cursive;
+}
+h1 {
+	color:white;
+	font-size:80px;
+	font-weight: bold;
+	font-family: 'Amatic SC', cursive;
+	font-family: 'Orbitron', sans-serif;
+	font-family: 'Bungee Hairline', cursive;
+	}
+
+/* KEYBOARD */
 .section-letters {
 	margin-bottom: 2em;
+	opacity: 0.9;
 }
 
-/* hangman */
+/* HANGMAN */
 .section-hangman {
+	background-color:white;
+	height:300px;
+	padding: 1em;
+	opacity:0.45;
+}
 
+.section-preview {
+	background-color: white;
+	height:300px;
+	padding: 1em 1em 1em 3em;
+	opacity:0.45;
+}
+
+
+.font-game {
+	color: #403e56;
+	font-size: 32px;
+	font-family: 'Amatic SC', cursive;
+	font-family: 'Inconsolata', monospace;
+	font-family: 'Orbitron', sans-serif;
+	font-family: 'Audiowide', cursive;
+	font-family: 'Rock Salt', cursive;
+	font-family: 'Overpass Mono', monospace;
 }

@@ -70,7 +70,7 @@ function Game(options) {
 
 		if (this.isSolved()) {
 			var congrats = document.createElement('h1');
-			congrats.textContent = 'CONGRATS!';
+			congrats.textContent = 'CONGRATULATIONS!';
 			congrats.style.textAlign = 'center';
 			letterContainer.innerHTML = '';
 			letterContainer.appendChild(congrats);

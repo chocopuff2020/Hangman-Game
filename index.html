@@ -6,6 +6,24 @@
     <link rel="stylesheet" type="text/css" href="./node_modules/skeleton-css/css/normalize.css">
     <link rel="stylesheet" type="text/css" href="./node_modules/skeleton-css/css/skeleton.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Architects+Daughter|Coming+Soon|Dancing+Script|Nosifer|Orbitron|Permanent+Marker|Satisfy" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Audiowide|Inconsolata|Orbitron|Overpass+Mono|Rock+Salt" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Bungee+Hairline|Orbitron" rel="stylesheet">
+
+
+
+    <style type="text/css">
+    	html { 
+			  background: url(./images/img3.jpg) no-repeat center center fixed; 
+			  -webkit-background-size: cover;
+			  -moz-background-size: cover;
+			  -o-background-size: cover;
+			  background-size: cover;
+			}
+    </style>
 </head>
 
 <body>
@@ -13,7 +31,7 @@
         <div class="container">
             <div class="row" style="height: 25vh;">
                 <div class="columns twelve section-title">
-                    <h1>Hangman</h1>
+                    <h1 id="title">Hangman</h1>
                     <button id="play-button" class="button-primary">Play Again</button>
                 </div>
             </div>
@@ -31,9 +49,9 @@
                 </div>
                 <div class="columns six">
                     <div class="section-preview">
-	                    <p>word:</p>
-                    	<p id="word_preview">_ _ _ _</p>
-                    	<p>guesses left <span id="guesses-left"></span></p>
+	                    <p class="font-game"> word:</p>
+                    	<p class="font-game" id="word_preview"> _ _ _ _</p>
+                    	<p class="font-game"> guesses left <span id="guesses-left"></span></p>
                     </div>
                 </div>
             </div>
