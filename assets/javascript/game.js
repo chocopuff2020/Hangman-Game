@@ -1,17 +1,20 @@
 var A_ASCII = 65;
 var ALPHABET_SIZE = 26;
-var MAX_GUESSES = 5;
+var MAX_GUESSES = 6;
 var WORD_BANK = [
 	"cat",
 	"dog",
 	"bird",
-	"sloth",
-	"tatapop",
+	"fish",
+	"bear",
+	"pig",
 ];
+
 
 function getRandomeWord() {
 	return WORD_BANK[Math.floor(Math.random() * WORD_BANK.length)];
 }
+
 
 function getButton(value, hasGuessed) {
 	var button = document.createElement('button');
@@ -28,11 +31,13 @@ function getButton(value, hasGuessed) {
 	return button;
 }
 
+
 function Game(options) {
 	var currentWord = "CAT";
-	var guessesLeft = 5;
+	var guessesLeft = 6;
 	var guessed = ['z', 'r', 'x'];
 	var letterContainer = document.querySelector('.section-letters');
+	
 
 	this.play = function() {
 		currentWord = getRandomeWord().toUpperCase();
@@ -46,6 +51,7 @@ function Game(options) {
 			guessed.push(letter);
 			if (!currentWord.includes(letter)) {
 				guessesLeft -= 1;
+				document.getElementById("hangman").innerHTML = '<img src="./images/per' + guessesLeft + '.png">'
 			}
 			this.flush();
 		}
@@ -63,10 +69,12 @@ function Game(options) {
 
 	}
 
+
 	this.flush = function() {
 		this.drawButtons();
 		this.showGuessesLeft();
 		this.drawWordPreview();
+
 
 		if (this.isSolved()) {
 			var congrats = document.createElement('h1');
@@ -76,6 +84,7 @@ function Game(options) {
 			letterContainer.appendChild(congrats);
 		}
 
+
 		if (guessesLeft <= 0) {
 			var loser = document.createElement('h1');
 			loser.textContent = 'LOSER!';
@@ -84,6 +93,7 @@ function Game(options) {
 			letterContainer.appendChild(loser);
 		}
 	}
+
 
 	this.drawButtons = function() {
 		var that = this;
@@ -99,9 +109,11 @@ function Game(options) {
 		}
 	}
 
+
 	this.showGuessesLeft = function () {
 		document.querySelector('#guesses-left').textContent = guessesLeft;
 	}
+
 
 	this.drawWordPreview = function() {
 		var preview = currentWord
@@ -116,3 +128,5 @@ function Game(options) {
 		document.querySelector('#word_preview').textContent = preview;
 	}
 }
+
+

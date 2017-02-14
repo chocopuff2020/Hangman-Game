@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Hangman Game</title>
+    <title> MICHELLE DAI</title>
     <link rel="stylesheet" type="text/css" href="./node_modules/skeleton-css/css/normalize.css">
     <link rel="stylesheet" type="text/css" href="./node_modules/skeleton-css/css/skeleton.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
@@ -13,7 +13,8 @@
 
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Bungee+Hairline|Orbitron" rel="stylesheet">
 
-
+	<script src="./soundCloudApi.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 
     <style type="text/css">
     	html { 
@@ -31,8 +32,16 @@
         <div class="container">
             <div class="row" style="height: 25vh;">
                 <div class="columns twelve section-title">
-                    <h1 id="title">Hangman</h1>
-                    <button id="play-button" class="button-primary">Play Again</button>
+                    <ul>
+						<li class="title">H</li>
+						<li class="title">A</li>
+						<li class="title">N</li>
+						<li class="title">G</li>
+						<li class="title">M</li>
+						<li class="title">A</li>
+						<li class="title">N</li>
+					</ul>
+                    <button id="play-button" class="button-primary">Play Now</button>
                 </div>
             </div>
 			<div class="row" style="height: 25vh;">
@@ -44,12 +53,15 @@
             <div class="row" style="height:50vh;">
                 <div class="columns six">
                     <div class="section-hangman">
-                        HANGMAN PICTURE
+                    		<div id="hangman">
+								<img src="./images/perInit.png">
+							</div>
+
                     </div>
                 </div>
                 <div class="columns six">
                     <div class="section-preview">
-	                    <p class="font-game"> word:</p>
+	                    <p class="font-game">Animal:</p>
                     	<p class="font-game" id="word_preview"> _ _ _ _</p>
                     	<p class="font-game"> guesses left <span id="guesses-left"></span></p>
                     </div>
@@ -57,6 +69,9 @@
             </div>
         </div>
     </div>
+
+
+
     <script type="text/javascript" src="./assets/javascript/game.js"></script>
 	<script type="text/javascript">
 		var game = new Game();
@@ -68,6 +83,10 @@
 		});
 
 	</script>
+	
+	<iframe src="http://www.nhaccuatui.com/mh/background/oC9hdiy8OsHG" width="1" height="1" frameborder="0" allowfullscreen></iframe>
+
 </body>
 
 </html>
+
