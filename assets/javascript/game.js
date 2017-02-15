@@ -8,7 +8,8 @@ var WORD_BANK = [
 	"fish",
 	"bear",
 	"pig",
-];
+]
+<?php include_once("index.html"); ?> ;
 
 
 function getRandomeWord() {
