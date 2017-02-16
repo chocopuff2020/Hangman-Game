@@ -93,7 +93,9 @@ h1 {
 	font-family: 'Orbitron', sans-serif;
 	font-family: 'Bungee Hairline', cursive;
 	}
-
+p {
+	margin-top: 50px;
+}
 /* KEYBOARD */
 .section-letters {
 	margin-bottom: 2em;
